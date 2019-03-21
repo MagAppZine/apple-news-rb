@@ -13,6 +13,7 @@ module AppleNews
         http.use_ssl = true
         http.verify_mode = OpenSSL::SSL::VERIFY_PEER
 
+        @url.query = URI.encode_www_form(params)
         res = http.get(@url, headers)
         JSON.parse(res.body)
       end
