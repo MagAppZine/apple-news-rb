@@ -67,7 +67,7 @@ describe AppleNews::Channel do
       expect(channel).to receive(:get_request).and_return(
         'data' => [{ 'id' => '123', 'type' => 'article', 'title' => 'Test Article' }]
       )
-      article = channel.articles.first
+      article = channel.articles.objects.first
       expect(article.id).to eq('123')
     end
 
@@ -75,7 +75,7 @@ describe AppleNews::Channel do
       expect(channel).to receive(:get_request).and_return(
         'data' => [{ 'id' => '123', 'type' => 'article', 'title' => 'Test Article' }]
       )
-      article = channel.articles(hydrate: false).first
+      article = channel.articles(hydrate: false).objects.first
       expect(article.id).to eq('123')
     end
   end

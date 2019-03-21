@@ -35,10 +35,15 @@ module AppleNews
       params  = params.with_indifferent_access
       hydrate = params.delete(:hydrate)
       resp = get_request("/channels/#{id}/articles", params)
-      resp['data'].map do |article|
+
+      response = Response.new
+      response.objects = resp['data'].map do |article|
         data = hydrate == false ? article : {}
         Article.new(article['id'], data, config)
       end
+      response.token = resp['meta']['nextPageToken'] rescue nil
+
+      return response
     end
   end
 end

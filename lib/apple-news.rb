@@ -32,6 +32,7 @@ require "apple-news/article"
 require "apple-news/document"
 require "apple-news/channel"
 require "apple-news/request"
+require "apple-news/response"
 require "apple-news/section"
 require "apple-news/security"
 

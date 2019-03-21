@@ -67,7 +67,7 @@ describe AppleNews::Section do
       expect(section).to receive(:get_request).and_return(
         'data' => [{ 'id' => '123', 'type' => 'article', 'title' => 'Test Article' }]
       )
-      article = section.articles.first
+      article = section.articles.objects.first
       expect(article.id).to eq('123')
     end
 
@@ -75,7 +75,7 @@ describe AppleNews::Section do
       expect(section).to receive(:get_request).and_return(
         'data' => [{ 'id' => '123', 'type' => 'article', 'title' => 'Test Article' }]
       )
-      article = section.articles(hydrate: false).first
+      article = section.articles(hydrate: false).objects.first
       expect(article.id).to eq('123')
     end
   end
